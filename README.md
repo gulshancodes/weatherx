@@ -20,7 +20,7 @@ Live Weather Searching React App, built with the help of **OpenWeather API**.
 
 <br/>
 
-## Available Scripts
+## Available Scripts:
 
 #### `npm start`
 

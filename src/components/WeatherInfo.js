@@ -6,12 +6,11 @@ import OpacityIcon from '@mui/icons-material/Opacity';
 import AirIcon from '@mui/icons-material/Air';
 import CompressIcon from '@mui/icons-material/Compress';
 
-const WeatherInfo = (props) => {
-
-    const { weatherData } = props;
+const WeatherInfo = ({ weatherData }) => {
 
     const { name, sys, main, weather, wind } = weatherData;
 
+    // additional weather details
     const weatherDetails = [
         {
             id: 1,
@@ -44,57 +43,55 @@ const WeatherInfo = (props) => {
     ];
 
     return (
-        <>
-            <Box>
-                <Typography variant="h4" mt={5} color="primary.main">
-                    {name}
-                    <Typography variant="h5" component="span">
-                        , {sys?.country}
-                    </Typography>
+        <Box>
+            <Typography variant="h4" mt={5} color="primary.main">
+                {name}
+                <Typography variant="h5" component="span">
+                    , {sys?.country}
                 </Typography>
+            </Typography>
 
-                <Typography component="p">
-                    {time} | {day}
+            <Typography component="p">
+                {time} | {day}
+            </Typography>
+
+            <Typography variant="h1" fontWeight="500" mt={5} color="primary.main">
+                {Math.trunc(main?.temp)}°c
+            </Typography>
+
+            <Typography component="p" mb={5}>
+                Min: {main?.temp_min}°c | Max: {main?.temp_max}°c
+            </Typography>
+
+            <Divider>
+                <Typography variant="h5">
+                    {weather?.[0]?.main}
                 </Typography>
+            </Divider>
 
-                <Typography variant="h1" fontWeight="500" mt={5} color="primary.main">
-                    {Math.trunc(main?.temp)}°c
-                </Typography>
-
-                <Typography component="p" mb={5}>
-                    Min: {main?.temp_min}°c | Max: {main?.temp_max}°c
-                </Typography>
-
-                <Divider>
-                    <Typography variant="h5">
-                        {weather?.[0]?.main}
-                    </Typography>
-                </Divider>
-
-                <Grid container mt={5} columnSpacing={2}>
-                    {
-                        weatherDetails.map(item => {
-                            const { id, icon, text, num, unit } = item;
-                            return (
-                                <Grid item xs={3} key={id}>
-                                    <Box color="primary.light">
-                                        {icon}
-                                    </Box>
-                                    <Box mt={2}>
-                                        <Typography component="p">
-                                            {text}
-                                        </Typography>
-                                        <Typography component="p" fontWeight="500">
-                                            {num}{unit}
-                                        </Typography>
-                                    </Box>
-                                </Grid>
-                            );
-                        })
-                    }
-                </Grid>
-            </Box>
-        </>
+            <Grid container mt={5} columnSpacing={2}>
+                {
+                    weatherDetails.map(item => {
+                        const { id, icon, text, num, unit } = item;
+                        return (
+                            <Grid item xs={3} key={id}>
+                                <Box color="primary.light">
+                                    {icon}
+                                </Box>
+                                <Box mt={2}>
+                                    <Typography component="p">
+                                        {text}
+                                    </Typography>
+                                    <Typography component="p" fontWeight="500">
+                                        {num}{unit}
+                                    </Typography>
+                                </Box>
+                            </Grid>
+                        );
+                    })
+                }
+            </Grid>
+        </Box>
     );
 };
 

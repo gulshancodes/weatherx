@@ -1,9 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-const ErrorScreen = (props) => {
-
-    const { weatherData } = props;
+const ErrorScreen = ({ weatherData }) => {
 
     return (
         <Box mt={5}>

@@ -2,9 +2,7 @@ import React from 'react';
 import { Box, IconButton, InputAdornment, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
-const SearchBar = (props) => {
-
-    const { cityName, setCityName, getWeatherData } = props;
+const SearchBar = ({ cityName, setCityName, getWeatherData }) => {
 
     return (
         <Box component="form" onSubmit={getWeatherData}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material';
 
+// customizing the default MUI theme
 const theme = createTheme({
     palette: {
         primary: {
@@ -33,10 +34,10 @@ const theme = createTheme({
     }
 });
 
-const AppThemeProvider = (props) => {
+const AppThemeProvider = ({ children }) => {
     return (
         <ThemeProvider theme={theme}>
-            {props.children}
+            {children}
         </ThemeProvider>
     );
 };

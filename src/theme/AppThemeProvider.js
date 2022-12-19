@@ -11,6 +11,12 @@ const theme = createTheme({
     components: {
         MuiCssBaseline: {
             styleOverrides: {
+                html: {
+                    fontSize: "16px",
+                    '@media (max-width: 399px)': {
+                        fontSize: "13px"
+                    }
+                },
                 body: {
                     backgroundImage: "linear-gradient(to top, #dfe9f3 0%, rgba(31, 38, 135, 0.1) 100%)",
                 },
@@ -35,7 +41,7 @@ const theme = createTheme({
                     }
                 }
             }
-        }
+        },
     }
 });
 

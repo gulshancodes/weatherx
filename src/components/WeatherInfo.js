@@ -69,16 +69,16 @@ const WeatherInfo = ({ weatherData }) => {
                 </Typography>
             </Divider>
 
-            <Grid container mt={5} columnSpacing={2}>
+            <Grid container mt={5} columnSpacing={2} rowGap={3}>
                 {
                     weatherDetails.map(item => {
                         const { id, icon, text, num, unit } = item;
                         return (
-                            <Grid item xs={3} key={id}>
+                            <Grid item xs={6} sm={3} key={id}>
                                 <Box color="primary.light">
                                     {icon}
                                 </Box>
-                                <Box mt={2}>
+                                <Box mt={1.5}>
                                     <Typography component="p">
                                         {text}
                                     </Typography>

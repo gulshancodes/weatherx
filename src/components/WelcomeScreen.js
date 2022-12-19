@@ -16,7 +16,6 @@ const WelcomeScreen = () => {
                 <Box
                     component="img"
                     src="/img/weather-img.svg"
-                    width={0.8}
                 />
             </Box>
         </>

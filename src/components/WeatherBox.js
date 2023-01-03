@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 import WeatherInfo from './WeatherInfo';
 import WelcomeScreen from './WelcomeScreen';
+import LoadingScreen from './LoadingScreen';
 import ErrorScreen from './ErrorScreen';
 import { apiKey, BASE_URL } from '../utils/apiInfo';
 import { weatherBoxStyle } from '../theme/customStyles';
@@ -11,6 +12,7 @@ import { Paper } from '@mui/material';
 const WeatherBox = () => {
 
     const [cityName, setCityName] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const [weatherData, setWeatherData] = useState(null);
 
     // API URL
@@ -18,9 +20,11 @@ const WeatherBox = () => {
 
     // Fetching the Weather Data
     const fetchWeatherData = async () => {
+        setIsLoading(true);
         try {
             const response = await fetch(apiUrl);
             const data = await response.json();
+            setIsLoading(false);
             setWeatherData(data);
         } catch (error) {
             console.log(error);
@@ -44,12 +48,16 @@ const WeatherBox = () => {
             />
 
             {
-                weatherData?.name ? (
-                    <WeatherInfo weatherData={weatherData} />
-                ) : weatherData?.cod === '404' ? (
-                    <ErrorScreen weatherData={weatherData} />
+                isLoading ? (
+                    <LoadingScreen />
                 ) : (
-                    <WelcomeScreen />
+                    weatherData?.name ? (
+                        <WeatherInfo weatherData={weatherData} />
+                    ) : weatherData?.cod === '404' ? (
+                        <ErrorScreen weatherData={weatherData} />
+                    ) : (
+                        <WelcomeScreen />
+                    )
                 )
             }
 

@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import SearchBar from './SearchBar';
-import WeatherInfo from './WeatherInfo';
-import WelcomeScreen from './WelcomeScreen';
-import LoadingScreen from './LoadingScreen';
-import ErrorScreen from './ErrorScreen';
+import { Paper } from '@mui/material';
 import { apiKey, BASE_URL } from '../utils/apiInfo';
 import { weatherBoxStyle } from '../theme/customStyles';
-import { Paper } from '@mui/material';
+import { ErrorScreen, LoadingScreen, SearchBar, WeatherInfo, WelcomeScreen } from '../components';
 
 
 const WeatherBox = () => {
